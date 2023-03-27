@@ -6,6 +6,6 @@ export type StatsContextType = {
     stats: SummonerMatchesResponse | undefined;
 
     setSummonerName: (summonerName: string) => void;
-    setStats: (stats: SummonerMatchesResponse) => void;
+    setStats: (stats: SummonerMatchesResponse | undefined) => void;
     setIsLoading: (isLoading: boolean) => void;
 };

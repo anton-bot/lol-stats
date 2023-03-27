@@ -11,6 +11,7 @@ export const SearchForm = () => {
     const { isLoading, setIsLoading, summonerName, setStats } = useStatsContext();
     const fetchStats = async () => {
         setIsLoading(true);
+        setStats(undefined);
 
         try {
             const response = await getMatchesByName(summonerName, HARDCODED_REGION);

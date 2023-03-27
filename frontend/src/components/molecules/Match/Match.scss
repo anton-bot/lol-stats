@@ -1,0 +1,27 @@
+@import '../../../variables';
+
+.Match {
+    padding: 1em;
+    border: 1px solid $match-border;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1em;
+
+    .champion {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+
+        img {
+            max-width: 50px;
+        }
+    }
+
+    .kda {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
