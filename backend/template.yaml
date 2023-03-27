@@ -64,6 +64,6 @@ Outputs:
   LolStatsFunction:
     Description: "Lol Stats Lambda Function ARN"
     Value: !GetAtt LolStatsFunction.Arn
-  LolStatsFunctionIamRole:
+  LolStatsFunctionRole:
     Description: "Implicit IAM Role created for LoL Stats function"
     Value: !GetAtt LolStatsFunctionRole.Arn
