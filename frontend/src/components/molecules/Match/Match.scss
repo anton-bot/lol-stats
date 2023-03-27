@@ -7,14 +7,16 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 1em;
+    color: $match-text;
 
     .champion {
         display: flex;
         flex-direction: column;
         font-weight: bold;
+        gap: 0.25em;
 
         img {
-            max-width: 50px;
+            max-width: 80px;
         }
     }
 

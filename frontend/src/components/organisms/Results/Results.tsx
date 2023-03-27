@@ -1,5 +1,6 @@
 import { useStatsContext } from "../../../state/StatsContext";
 import { Match } from "../../molecules/Match/Match";
+import './Results.scss';
 
 export const Results = () => {
     const { stats } = useStatsContext();
