@@ -1,0 +1,11 @@
+@import '../../../variables.scss';
+
+.SummonerNameInput {
+    input {
+        font-size: 1.5em;
+        padding: 0.25em;
+        background-color: $input-bg;
+        color: $input-text;
+        border: 1px solid $input-border;
+    }
+}
