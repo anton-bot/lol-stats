@@ -1,0 +1,11 @@
+@import './../../../variables.scss';
+
+.Header {
+    h1 {
+        color: $accent-color;
+    }
+
+    h2 {
+        color: $secondary-accent-color;
+    }
+}

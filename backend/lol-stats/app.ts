@@ -1,6 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { getSummonerByName } from './api/getSummonerByName';
-import { Regions } from 'twisted/dist/constants';
 import { createError } from './utils/createError';
 import { isValidSummonerName } from './validation/isValidSummonerName';
 import { isValidRegion } from './validation/isValidRegion';
