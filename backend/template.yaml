@@ -8,7 +8,7 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 5
 
 Resources:
   LolStatsFunction:
@@ -34,6 +34,26 @@ Resources:
         EntryPoints: 
         - app.ts
 
+  LolStatsFunctionUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      AuthType: NONE
+      Cors:
+        AllowMethods:
+          - GET
+        AllowOrigins:
+          - '*' # TODO FIXME: add specific URL when available
+        MaxAge: 300
+      TargetFunctionArn: !GetAtt LolStatsFunction.Arn
+
+  permissionForURLInvoke:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref LolStatsFunction
+      FunctionUrlAuthType: 'NONE'
+      Action: lambda:InvokeFunctionUrl
+      Principal: '*'
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -46,4 +66,4 @@ Outputs:
     Value: !GetAtt LolStatsFunction.Arn
   LolStatsFunctionIamRole:
     Description: "Implicit IAM Role created for LoL Stats function"
-    Value: !GetAtt LolStatsFunctionIamRole.Arn
+    Value: !GetAtt LolStatsFunctionRole.Arn
