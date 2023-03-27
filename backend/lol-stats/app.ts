@@ -4,7 +4,10 @@ import { Regions } from 'twisted/dist/constants';
 import { createError } from './utils/createError';
 import { isValidSummonerName } from './validation/isValidSummonerName';
 import { isValidRegion } from './validation/isValidRegion';
-import { SummonerV4DTO } from 'twisted/dist/models-dto';
+import { MatchV5DTOs, SummonerV4DTO } from 'twisted/dist/models-dto';
+import { getMatchList } from './api/getMatchList';
+import { getMatch } from './api/getMatch';
+import { getSummonerMatchesResponse } from './utils/getSummonerMatchesResponse';
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
@@ -29,9 +32,23 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             return createError('Summoner not found', 404);
         }
 
+        let matchIds: string[];
+        try {
+            matchIds = await getMatchList(foundSummoner.puuid, region);
+        } catch (err) {
+            return createError('Unable to retrieve match list for summoner', 500);
+        }
+
+        let matches: MatchV5DTOs.MatchDto[];
+        try {
+            matches = await Promise.all(matchIds.map((matchId) => getMatch(matchId, region)));
+        } catch (err) {
+            return createError('Unable to retrieve some of the matches for the summoner', 500);
+        }
+
         return {
             statusCode: 200,
-            body: JSON.stringify(foundSummoner),
+            body: JSON.stringify(getSummonerMatchesResponse(foundSummoner, matches)),
         };
     } catch (err) {
         return createError('Unknown error occurred');
