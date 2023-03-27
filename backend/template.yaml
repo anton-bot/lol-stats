@@ -42,7 +42,7 @@ Resources:
         AllowMethods:
           - GET
         AllowOrigins:
-          - '*' # TODO FIXME: add specific URL when available
+          - https://d288aw004gpvw5.cloudfront.net # S3 bucket lol-stats
         MaxAge: 300
       TargetFunctionArn: !GetAtt LolStatsFunction.Arn
 

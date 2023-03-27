@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
+  // TODO FIXME: delete this, just testing CORS
+  useEffect(() => {
+    fetch('https://nxjjzmhurofxwtrejw4dpdokca0lcios.lambda-url.us-east-1.on.aws/?region=NA1&summoner=Doublelift');
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>LoL Stats</h1>
+        <h2>Sample app showing summoner stats</h2>
       </header>
     </div>
   );
