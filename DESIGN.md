@@ -1,6 +1,6 @@
 # System Design #
 
-## Rate Limiting ##
+## Question 1: Rate Limiting ##
 
 > How would you handle the situation where your application goes over the rate limiting threshold on Riot Games' API?
 
@@ -46,7 +46,7 @@ We may also consider maintaining reserve API keys, created for a different app i
 
 > How would you change your code to make this application extensible for any game while keeping the code maintainable?
 
-### Modularity ###
+### Question 2: Modularity ###
 
 Each game should be supported as a module, perhaps published as an NPM package or placed into a separate folder. We identify the abstractions shared between games, for example the player's name and the concept of a "match". Each module would implement a common interface like this:
 
@@ -121,7 +121,7 @@ For example, the type for League of Legends could look like this:
 type LeagueOfLegends = TeamGame & MultiRegionGame & PurchasableItemsGame; // and more
 ```
 
-## Leaderboards, Fantasy Sports and more ##
+## Question 3: Leaderboards, Fantasy Sports and more ##
 
 > How would you organize the codebase to support leaderboards, fantasy sports, and so on, each with its own user-facing UI and admin UI, so the entire software is maintainable?
 
